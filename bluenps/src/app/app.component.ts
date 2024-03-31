@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {formatDate} from '@angular/common';
+import { HttpClient } from  '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,8 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'bluenps';
+  test: any;
+  constructor(private http: HttpClient){}
 
 
   submitCourtName(): void{
@@ -15,7 +19,19 @@ export class AppComponent {
     var court = e.value;
     var name = (document.getElementById("nameInput") as HTMLInputElement).value;
     var date = new Date();
-    alert(date.getTime());
+    var dateString = formatDate(date, "yyyy-MM-dd", 'en')
+    var dict = {
+                "name" : name,
+                "time" : dateString,
+                "court" : court
+    }
+    var response = this.http.get("http://localhost:8000");
+    response.subscribe( {
+      next: (r) => {this.test=r},
+      error: (e) => console.log(e),
+      complete: () => console.log("response completed")
+    }
+    )
   }
   
 

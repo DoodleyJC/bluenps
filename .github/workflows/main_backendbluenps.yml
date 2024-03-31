@@ -27,10 +27,12 @@ jobs:
           python-version: '3.12'
 
       - name: Create and start virtual environment
-        working-directory: ./bluenpsbackend
         run: |
           python -m venv venv
           source venv/bin/activate
+
+      - name: install requirements
+        run: pip install -r requirements.txt
 
       # I added this and I hope its good
       - name: Collect static

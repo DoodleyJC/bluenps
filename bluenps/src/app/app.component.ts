@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {formatDate} from '@angular/common';
 import { HttpClient, HttpResponse } from  '@angular/common/http';
+import {signup, BackendService } from './backend.service';
 
 @Component({
   selector: 'app-root',
@@ -11,27 +12,41 @@ import { HttpClient, HttpResponse } from  '@angular/common/http';
 export class AppComponent {
   title = 'bluenps';
   test: any;
-  constructor(private http: HttpClient){}
+  data: signup[]= [];
+  constructor(private http: HttpClient, private backendService: BackendService){}
+  
+  ngOnInit(){
+    this.refreshData();
+  }
 
-
+  refreshData(){
+    this.backendService.getAllData()
+    .subscribe( data => this.data = data);
+  }
   submitCourtName(): void{
+
+    
     var e = (document.getElementById("courtSelection") as HTMLInputElement);
     var court = e.value;
     var name = (document.getElementById("nameInput") as HTMLInputElement).value;
     var date = new Date();
+    if(name==undefined || date==undefined || court == undefined){
+      alert("error");
+      return;
+    }
     var dateString = formatDate(date, "yyyy-MM-dd", 'en')
-    var dict = {
+    
+    var newSignup:signup = {
                 "name" : name,
                 "time" : dateString,
                 "court" : court
     }
-    var response = this.http.get("http://localhost:8000");
-    response.subscribe( {
-      next: (r) => {this.test=r},
-      error: (e) => console.log(e),
-    }
+    this.backendService.postSignup(newSignup).subscribe({
+      next(value) {console.log(value)},
+      error: (e) =>console.log(e)}
     )
   }
+
   
 
 

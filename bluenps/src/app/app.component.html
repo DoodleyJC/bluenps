@@ -1,13 +1,11 @@
 <html>
-  <div class="container">
-    <h1> Where everyone is atm{{test}}</h1>
-    <div class="row">
-      <div class="col border border-danger">
-        Blue
-      </div>
-      <div class="col border border-danger">
-        NPS
-      </div>
+
+  <div class="row">
+    <div class="col border border-danger">
+      Blue
+    </div>
+    <div class="col border border-danger">
+      NPS
     </div>
   </div>
   <div class="container">
@@ -20,6 +18,14 @@
       <input class="form-control" id="nameInput" placeholder="CuteDaisey">
       <button type="button" class="btn btn-success" (click)="submitCourtName()">submit</button>
     </div>
+  </div>
+  <div class="container">
+    <li *ngFor="let player of data">
+      <div class="row">
+        <div class="col">{{player.name}}</div>
+        <div class="col">{{player.time}}</div>
+        <div class="col">{{player.court}}</div>
+      </div>
   </div>
 
 </html>

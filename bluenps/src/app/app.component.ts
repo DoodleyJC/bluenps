@@ -42,7 +42,7 @@ export class AppComponent {
                 "court" : court
     }
     this.backendService.postSignup(newSignup).subscribe({
-      next(value) {console.log(value)},
+      next(value) {alert("succesfully signed up, refresh page to see yourself")},
       error: (e) =>console.log(e)}
     )
   }

@@ -46,11 +46,12 @@ jobs:
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v3
+        
         with:
-          name: manage.py
+          name: python-app
           path: |
-            release.zip
-            !venv/
+            bluenpsbackend/release.zip
+            bluenpsbackend/!venv/
 
   deploy:
     runs-on: ubuntu-latest

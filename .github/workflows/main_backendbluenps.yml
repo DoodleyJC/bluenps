@@ -51,7 +51,7 @@ jobs:
           name: python-app
           path: |
             bluenpsbackend/release.zip
-            bluenpsbackend/!venv/
+            !bluenpsbackend/venv/
 
   deploy:
     runs-on: ubuntu-latest

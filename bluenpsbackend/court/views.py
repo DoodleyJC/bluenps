@@ -32,7 +32,7 @@ def index(request):
         return r
     else:
         print(f"twasnot a post, twas {request.method}")
-        alldata = list(CourtPresence.objects.all().values())
+        alldata = list(CourtPresence.objects.filter(time=datetime.today()).values())
         r = JsonResponse(alldata, safe=False)
         r['Access-Control-Allow-Origin']= '*'
         return r

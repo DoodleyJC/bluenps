@@ -3,10 +3,8 @@ from django.http import HttpResponse, JsonResponse
 from court.models import CourtPresence
 import json
 from datetime import datetime, timedelta, time
-
-today = datetime.now().date()
-
 def index(request):
+    today = datetime.now().date()
     print("received request")
     print(request)
     print(request.body)
@@ -36,4 +34,10 @@ def index(request):
         r = JsonResponse(alldata, safe=False)
         r['Access-Control-Allow-Origin']= '*'
         return r
-
+    
+def all(request):
+    if request.method=="GET":
+        alldata = list(CourtPresence.objects.all().values())
+        r = JsonResponse(alldata, safe=False)
+        r['Access-Control-Allow-Origin']= '*'
+        return r

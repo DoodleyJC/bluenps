@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {formatDate} from '@angular/common';
-import { HttpClient } from  '@angular/common/http';
+import { HttpClient, HttpResponse } from  '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,6 @@ export class AppComponent {
     response.subscribe( {
       next: (r) => {this.test=r},
       error: (e) => console.log(e),
-      complete: () => console.log("response completed")
     }
     )
   }

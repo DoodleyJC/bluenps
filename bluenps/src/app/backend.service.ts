@@ -21,6 +21,8 @@ export class BackendService {
   getAllData( ){
     console.log("test");
     return this.http.get<signup[]>(this.actualurl);
+
+    
   }
 
   postSignup(newPlayer:signup){

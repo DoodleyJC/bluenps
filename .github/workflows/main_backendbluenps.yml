@@ -36,7 +36,7 @@ jobs:
 
       # I added this and I hope its good
       - name: Collect static
-        run: python manage.py collectstatic < yes
+        run: python manage.py collectstatic --noinput
           
 
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)

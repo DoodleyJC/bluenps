@@ -14,7 +14,10 @@ env:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    
+    defaults:
+      run:  
+        working-directory:
+          ./bluenpsbackend
     steps:
     - uses: actions/checkout@v2
 
@@ -27,8 +30,6 @@ jobs:
       run: |
         python3 -m venv venv
         source venv/bin/activate
-      working-directory:
-        bluenpsbackend/
 
     - name: Install dependencies
       run: pip install -r requirements.txt

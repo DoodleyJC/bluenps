@@ -6,11 +6,8 @@ import { DeleteComponent } from './delete/delete.component';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AppRoutingModule } from './app-routing.module';
-const routes: Routes = [
-  {path:"test", component: DeleteComponent},
-  {path: "", component: DeleteComponent},
-  {path: "**", component: DeleteComponent}
-];
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +16,12 @@ const routes: Routes = [
     HomePageComponent,
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
-    RouterModule,
     AppRoutingModule,
+    BrowserModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

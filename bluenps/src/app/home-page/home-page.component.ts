@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 export class HomePageComponent implements OnInit {
   title = 'bluenps';
   test: any;
-  data: signup[]= [{name: "uninitialized", court: "uninitialized", time: "uninitialized"}];
+  data: signup[]= [{name: "uninitialized", court: "uninitialized", time: "please wait"}];
   constructor(private http: HttpClient, private backendService: BackendService){}
   
   ngOnInit(){

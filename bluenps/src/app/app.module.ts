@@ -16,11 +16,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     HomePageComponent,
   ],
   imports: [
-    BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    HashLocationStrategy,
-    LocationStrategy, 
+    BrowserModule,
     RouterModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],

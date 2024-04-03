@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {formatDate} from '@angular/common';
 import { HttpClient, HttpResponse } from  '@angular/common/http';
 import {signup, BackendService } from '../backend.service';
@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   title = 'bluenps';
   test: any;
   data: signup[]= [{name: "uninitialized", court: "uninitialized", time: "uninitialized"}];

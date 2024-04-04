@@ -3,6 +3,13 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 export type signup = {
+  index: number;
+  name: string;
+  time: string;
+  court: string;
+}
+
+export type signupPost = {
   name: string;
   time: string;
   court: string;
@@ -24,10 +31,10 @@ export class BackendService {
     
   }
 
-  postSignup(newPlayer:signup){
+  postSignup(newPlayer:signupPost){
     console.log(newPlayer);
     var headers = new HttpHeaders().set("Content-Type", "application/json; charset=utf-8");
-    return this.http.post<signup>(this.url, newPlayer, {headers: headers});
+    return this.http.post<signupPost>(this.url, newPlayer, {headers: headers});
   }
 
 

@@ -19,14 +19,32 @@
       <button type="button" class="btn btn-success" (click)="submitCourtName()">submit</button>
     </div>
   </div>
+
+
+
   <div class="container">
-    <li class="border" *ngFor="let player of data">
-      <div class="row">
-        <div class="col">{{player.name}}</div>
-        <div class="col">{{player.time}}</div>
-        <div class="col">{{player.court}}</div>
-        <div class="col"> <button type="button" class="btn btn-danger" (click) = "deletePlayer(player)">remove</button> </div>
+    <div class="row">
+      <div class="col">
+        <div class="border border-success" *ngFor="let player of npsdata">
+          <div class="row">
+            <div class="col">{{player.name}}</div>
+            <div class="col">{{player.time}}</div>
+            <div class="col">{{player.court}}</div>
+            <div class="col"> <button type="button" class="btn btn-danger" (click) = "deletePlayer(player)">remove</button></div>
+          </div> 
+        </div>
+      </div>  
+      <div class="col">
+        <div class="border border-primary" *ngFor="let player of bluedata">
+          <div class="row">
+            <div class="col">{{player.name}}</div>
+            <div class="col">{{player.time}}</div>
+            <div class="col">{{player.court}}</div>
+            <div class="col"> <button type="button" class="btn btn-danger" (click) = "deletePlayer(player)">remove</button> </div>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 
 </html>

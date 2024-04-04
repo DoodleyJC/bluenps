@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {formatDate} from '@angular/common';
 import { HttpClient, HttpResponse } from  '@angular/common/http';
-import {signup, BackendService } from '../backend.service';
+import {signup, BackendService, signupPost } from '../backend.service';
 import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-home-page',
@@ -11,7 +11,10 @@ import { RouterModule } from '@angular/router';
 export class HomePageComponent implements OnInit {
   title = 'bluenps';
   test: any;
-  data: signup[]= [{name: "uninitialized", court: "uninitialized", time: "please wait"}];
+  data: signup[]= [{index: 0, name: "uninitialized", court: "uninitialized", time: "please wait"}];
+  npsdata: signup[]= [{index: 0,name: "nps", court: "uninitialized", time: "please wait"}];
+  bluedata: signup[] = [{index: 0,name: "blue", court: "uninitialized", time: "please wait"}];
+  
   constructor(private http: HttpClient, private backendService: BackendService){}
   
   ngOnInit(){
@@ -21,7 +24,14 @@ export class HomePageComponent implements OnInit {
   refreshData(){
     console.log("refreshing data");
     this.backendService.getAllData()
-    .subscribe( data => this.data = data);
+    .subscribe( data => this.setData(data));
+  }
+
+
+  setData(data:signup[]){
+    this.data = data;
+    this.npsdata = data.filter((activity) => activity.court === "nps");
+    this.bluedata = data.filter((activity) => activity.court === "blue");
   }
   submitCourtName(): void{
     var e = (document.getElementById("courtSelection") as HTMLInputElement);
@@ -34,7 +44,7 @@ export class HomePageComponent implements OnInit {
     }
     var dateString = formatDate(date, "yyyy-MM-dd", 'en')
     
-    var newSignup:signup = {
+    var newSignup:signupPost = {
                 "name" : name,
                 "time" : dateString,
                 "court" : court

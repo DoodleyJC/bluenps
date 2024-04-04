@@ -51,10 +51,10 @@ def deleteToday(request):
             return badRequest()
         
         nameQuery = request.headers["nameQuery"]
+        fullQuery = f"^{nameQuery}$"
         todayData = CourtPresence.objects.filter(
             time=datetime.today(),
-            name__regex= nameQuery
-            )
+            ).filter(name__regex= f"{fullQuery}")
         dataCopy = list(todayData.values())
         todayData.delete()
         r = JsonResponse(dataCopy, safe=False)

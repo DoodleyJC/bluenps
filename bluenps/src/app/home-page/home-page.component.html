@@ -20,11 +20,12 @@
     </div>
   </div>
   <div class="container">
-    <li *ngFor="let player of data">
+    <li class="border" *ngFor="let player of data">
       <div class="row">
         <div class="col">{{player.name}}</div>
         <div class="col">{{player.time}}</div>
         <div class="col">{{player.court}}</div>
+        <div class="col"> <button type="button" class="btn btn-danger" (click) = "deletePlayer(player)">remove</button> </div>
       </div>
   </div>
 

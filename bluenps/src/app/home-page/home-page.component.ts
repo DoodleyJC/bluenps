@@ -45,5 +45,13 @@ export class HomePageComponent implements OnInit {
     )
     this.refreshData();
   }
+  deletePlayer(player: signup): void{
+    this.backendService.deleteData(player.name).subscribe(
+      {
+        next: (value) => {this.refreshData();},
+        error: (e) => {console.log("errordeleting:", e);this.refreshData();}
+      }
+    )
+  }
     
 }

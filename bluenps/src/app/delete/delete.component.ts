@@ -4,7 +4,8 @@ import { BackendService } from '../backend.service';
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',
-  styleUrls: ['./delete.component.css']
+  styleUrls: ['./delete.component.css'],
+  standalone:true,
 })
 export class DeleteComponent {
   constructor(private backendService: BackendService){}

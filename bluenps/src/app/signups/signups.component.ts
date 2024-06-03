@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {formatDate} from '@angular/common';
+import {formatDate, NgFor} from '@angular/common';
 import { HttpClient, HttpResponse } from  '@angular/common/http';
 import {signup, BackendService, signupPost } from '../backend.service';
-import { RouterModule } from '@angular/router';
-import { SignupsComponent } from '../signups/signups.component';
-
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css'],
+  selector: 'app-signups',
+  templateUrl: './signups.component.html',
+  styleUrl: './signups.component.css',
   standalone: true,
-  imports: [SignupsComponent]
+  imports:[NgFor]
 })
-export class HomePageComponent implements OnInit {
-  title = 'bluenps';
-  test: any;
+
+export class SignupsComponent {
   data: signup[]= [{index: 0, name: "uninitialized", court: "uninitialized", time: "please wait"}];
   npsdata: signup[]= [{index: 0,name: "nps", court: "uninitialized", time: "please wait"}];
   bluedata: signup[] = [{index: 0,name: "blue", court: "uninitialized", time: "please wait"}];
@@ -68,5 +64,4 @@ export class HomePageComponent implements OnInit {
       }
     )
   }
-    
 }

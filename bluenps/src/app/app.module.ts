@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { SignupsComponent } from './signups/signups.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DeleteComponent,
-    HomePageComponent,
+    //DeleteComponent,
+    //HomePageComponent,
+    //SignupsComponent,
   ],
   imports: [
     HttpClientModule,

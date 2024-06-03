@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 export type signup = {
   index: number;
@@ -27,9 +28,9 @@ export class BackendService {
   getAllData( ){
     console.log("test");
     return this.http.get<signup[]>(this.url);
-
-    
   }
+
+
 
   postSignup(newPlayer:signupPost){
     console.log(newPlayer);
@@ -44,6 +45,6 @@ export class BackendService {
     headers = headers.set("nameQuery", regexString);
     console.log(headers);
     return this.http.delete(this.url + "delete", {headers: headers});
-
   }
+
 }
